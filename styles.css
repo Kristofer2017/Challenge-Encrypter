@@ -1,0 +1,160 @@
+body {
+    background: #F3F5FC;
+    font-family: 'Poppins', sans-serif;
+}
+
+header {
+    padding: 2%;
+}
+
+main {
+    padding: 0 5% 0 13%;
+}
+
+textarea {
+    resize: none;
+    border-style: none;
+    outline: none;
+    padding: 10px;
+    font-size: 20px;
+    color: #0A3871;
+    font-family: 'Poppins', sans-serif;
+    background: #F3F5FC;
+}
+
+textarea::placeholder {
+    color: #0A3871;
+    opacity: 1;
+}
+
+.information {
+    color: #495057;
+    font-size: 12px;
+    margin: 20px 0;
+}
+
+button {
+    padding: 15px 6%;
+    margin-right: 17px;
+    font-size: 15px;
+    font-family: 'Poppins', sans-serif;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.encrypt {
+    border-style: none;
+    background: #0A3871;
+    color: #fff;
+}
+
+.decrypt {
+    border: 1px solid #0A3871;
+    background: #D8DFE8;
+    color: #0A3871;
+}
+
+button:hover {
+    opacity: 0.93;
+    transform: scale(1.005);
+}
+
+.output {
+    text-align: center;
+    background-color: white;
+    border-radius: 15px;
+    width: 30%;
+    height: 85%;
+    position: absolute;
+    right: 3%;
+    top: 5px;
+    margin: 30px;
+    padding: 30px 20px;
+    box-shadow: 5px 5px 20px 5px lightgray;
+}
+
+.boy-pic {
+    width: 70%;
+    margin: 45px auto 20px;
+}
+
+.title, .subtitle {
+    display: inline-block;
+}
+
+.title {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 25px auto;
+}
+
+.subtitle {
+    font-size: 15px;
+    color: #495057;
+    width: 70%;
+}
+
+.copy-btn {
+    display: none;
+    padding: 15px 15%;
+    position: absolute;
+    bottom: 0;
+    left: 20%;
+    margin: 15px 0 30px;
+}
+
+.restart {
+    display: none;
+    padding: 15px 25px;
+    position: absolute;
+    bottom: 0;
+    left: 62%;
+    margin: 15px 0 30px;
+}
+
+.text-processed {
+    font-size: 18px;
+    color: #495057;
+    display: none;
+    width: 95%;
+    background: #fff;
+}
+
+.paste {
+    padding: 15px 25px;
+    border-style: none;
+    background: #0A3871;
+    color: #fff;
+}
+
+.clear {
+    padding: 15px 25px;
+    border: 1px solid #0A3871;
+    background: #D8DFE8;
+    color: #0A3871;
+}
+
+main {
+    margin-bottom: 8%;
+}
+
+footer{
+    padding: 6% 5%;
+    background-color: #0A3871;
+    color: #F3F5FC;
+    line-height: 2;
+    text-align: center;
+}
+
+.footer-link {
+    display: inline-block;
+    font-size: 30px;
+    margin: 0 15px 25px;
+    color: #F3F5FC;
+}
+
+.footer-link:hover {
+    color: #D8DFE8;
+    transform: scale(1.07);
+    text-shadow: 0 0 4px #f3f5fc81;
+}

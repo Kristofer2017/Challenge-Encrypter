@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+   <!-- Google Fonts -->
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Poppins&display=swap" rel="stylesheet">
+
+   <!-- Icons/Font Awesome -->
+   <link rel="stylesheet" href="https://kit.fontawesome.com/ceda803079.css" crossorigin="anonymous">
+   <script src="https://kit.fontawesome.com/ceda803079.js" crossorigin="anonymous"></script>
+
+   <link rel="stylesheet" href="./reset.css">
+   <link rel="stylesheet" href="./styles.css">
+
+   <script defer src="./app.js"></script>
+
+   <title>Text Encrypter</title>
+</head>
+<body>
+   <header>
+      <img src="./Images/Logo.png" alt="alura logo">
+   </header>
+   <main>
+      <textarea class="text-entered" cols="50" rows="12" placeholder="Enter your text here"></textarea>
+      
+      <h3 class="information"><i class="fa-solid fa-circle-info"></i> Only lower case and no tildes.</h3>
+
+      <button class="encrypt">Encrypt</button>
+      <button class="decrypt">Decrypt</button>
+      <button class="paste"><i class="fa-regular fa-paste"></i></button>
+      <button class="clear"><i class="fa-solid fa-trash-can"></i></button>
+
+      <div class="output">
+         <img class="boy-pic" src="./Images/Boy.png" alt="boy inspecting a diamond with a magnifier"></textarea>
+         
+         <h2 class="title">No message was found</h2>
+         <h3 class="subtitle">Enter the text you wish to encrypt or decrypt.</h3>
+
+         <textarea class="text-processed" cols="20" rows="15" readonly></textarea>
+         <button class="copy-btn">Copy</button>
+         <button class="restart"><i class="fa-solid fa-rotate-left"></i></button>
+      </div>
+   </main>
+   <footer>
+      <a class="footer-link" href="https://www.linkedin.com/in/kristofercontreras2017" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+      <a class="footer-link" href="https://github.com/Kristofer2017" target="_blank"><i class="fa-brands fa-github"></i></a>
+      <a class="footer-link" href="mailto:kristofercontreras.2017@gmail.com" target="_blank"><i class="fa-solid fa-envelope"></i></i></a>
+
+      <p>&copy 2023 Kristofer Vasquez</p>
+      <p>"The only way to truly fail is by giving up"</p>
+   </footer>
+</body>
+</html>
