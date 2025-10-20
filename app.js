@@ -1,109 +1,43 @@
-const select = (className) => document.querySelector("." + className);
+// Selecting elements from the DOM
+const btnEncrypt = document.getElementById("encrypt-btn");
+const btnDecrypt = document.getElementById("decrypt-btn");
+const btnPaste = document.getElementById("paste-btn");
+const btnClear = document.getElementById("clear-btn");
+const btnCopy = document.getElementById("copy-btn");
+const btnReset = document.getElementById("restart-btn");
+const input = document.getElementById("input");
+const output = document.getElementById("output");
+const msgFound = document.getElementById("message-found");
+const msgNotFound = document.getElementById("message-not-found");
+const infoLabel = document.getElementById("information");
+const darkModeBtn = document.getElementById("dark-mode-btn");
 
-let btnEncrypt = select("encrypt");
-let btnDecrypt = select("decrypt");
-let btnPaste = select("paste");
-let btnClear = select("clear");
-let btnCopy = select("copy-btn");
-let btnReset = select("restart");
-let input = select("text-entered");
-let output = select("text-processed");
+// Adding event listeners to the buttons
+btnEncrypt.addEventListener("click", encrypting)
+btnDecrypt.addEventListener("click", decrypting)
+btnCopy.addEventListener("click", copying)
+btnPaste.addEventListener("click", pasting)
+btnClear.addEventListener("click", clearing)
+btnReset.addEventListener("click", clearing)
+darkModeBtn.addEventListener("click", setDarkMode)
+input.addEventListener("input", verifyTextEntered);
+input.addEventListener("change", verifyTextEntered);
 
+initialConfiguration();
 
-const addClickEventListener = (element, className) => element.addEventListener("click", className);
-
-addClickEventListener(btnEncrypt, encrypting);
-addClickEventListener(btnDecrypt, decrypting);
-addClickEventListener(btnPaste, pasting);
-addClickEventListener(btnClear, clearing);
-addClickEventListener(btnCopy, copying);
-addClickEventListener(btnReset, reseting);
-
+function initialConfiguration(){
+    showOutput(false)
+    infoLabel.classList.add("correct");
+}
 
 function encrypting(){
-    if (input.value == "") {
-        return;
-    }
-
-    configureLeftPanel();
-    
-    // Adding the encrypted text to the textarea assigned
     output.value = encryptText(input.value);
+    showOutput(true);
 }
 
 function decrypting(){
-    if (input.value == "") {
-        return;
-    }
-
-    configureLeftPanel();
-
-    // Adding the decrypted text to the textarea assigned
     output.value = decryptText(input.value);
-}
-
-function pasting(){
-    navigator.clipboard.readText().then(text => input.value = text);
-}
-
-function clearing(){
-    input.value = "";
-    input.focus();
-}
-
-function copying(){
-    let textToCopy = output.value;
-
-    copyText(textToCopy);
-}
-
-function reseting(){
-    // Hiding elements
-    btnCopy.style.display = "none";
-    btnReset.style.display = "none";
-    output.style.display = "none";
-
-    // Showing back elements
-    document.querySelector(".boy-pic").style.display = "inline-block";
-    document.querySelector(".title").style.display = "inline-block";
-    document.querySelector(".subtitle").style.display = "inline-block";
-
-    // Clearing any remianing text on the screen
-    clearing();
-}
-
-function copyText(text){
-    var input = document.createElement('textarea');
-    input.value = text;
-
-    document.body.appendChild(input);
-
-    input.select();
-
-    try{
-        return document.execCommand("copy");
-    }catch (ex){
-        console.warn("Copy to clipboard failed.", ex);
-        return prompt("Copy to clipboard: Ctrl+C, Enter", text);
-    }finally{
-        document.body.removeChild(input);
-    }
-}
-
-function configureLeftPanel(){
-    // Hides unnecesary elements
-    document.querySelector(".boy-pic").style.display = "none";
-    document.querySelector(".title").style.display = "none";
-    document.querySelector(".subtitle").style.display = "none";
-
-    // Showing buttons and adding existing styles to them
-    btnCopy.style.display = "inline-block";
-    btnReset.style.display = "inline-block";
-    btnCopy.classList.add("encrypt");
-    btnReset.classList.add("decrypt");
-
-    // Showing textarea cotaining the output
-    output.style.display = "inline-block";
+    showOutput(true);
 }
 
 function encryptText(text){
@@ -150,18 +84,52 @@ function decryptText(text){
     return txtDecrypted;
 }
 
-// Veryfy characters on the text entered are between a-z
+function showOutput(show){
+    if (show) {
+        msgNotFound.style.display = "none";
+        msgFound.style.display = "flex";
+    } else {
+        msgNotFound.style.display = "flex";
+        msgFound.style.display = "none";
+    }
+}
 
-document.addEventListener("keyup", verifyTextEntered);
+function copying(){
+    navigator.clipboard.writeText(output.value).catch(err => {
+        console.error("Error al copiar: ", err);
+    });
+}
+
+function pasting(){
+    navigator.clipboard.readText().then(text => {
+        input.value = text
+        verifyTextEntered();
+    }).catch(err => {
+        console.error("Error al pegar: ", err);
+    });
+}
+
+function clearing() {
+    showOutput(false);
+    input.value = "";
+    output.value = "";
+    verifyTextEntered();
+}
+
+function setDarkMode() {
+    document.body.classList.toggle('dark');
+}
 
 function verifyTextEntered(){
-    var allowed = /^[a-z ]*$/;
+    const allowed = /^[a-z ]*$/;
 
-    if(input.value.match(allowed)){
-        document.querySelector(".information").style.color = "#495057";
+    if(input.value ==  "" || input.value.match(allowed)){
+        infoLabel.classList.remove("wrong");
+        infoLabel.classList.add("correct");
         btnEncrypt.disabled = btnDecrypt.disabled = false;
     }else{
-        document.querySelector(".information").style.color = "#ff4735";
+        infoLabel.classList.remove("correct");
+        infoLabel.classList.add("wrong");
         btnEncrypt.disabled = btnDecrypt.disabled = true;
     }
 }

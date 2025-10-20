@@ -1,4 +1,16 @@
 # Challenge Encrypter
-Challenge to Encrypt and Decrypt to a secret code created by Alura and Oracle One Next Education. Design and main functionality proposed by them. Added special features such as pasting, restarting and deleting text.
+Challenge proposed by Alura and Oracle One Next Education program to Encrypt and Decrypt text to an special code wich just modifies vowels. 
 
-STILL WORKING ON: creating a responsive design, re-positioning some elements on the screen (looks a bit uggle because some elements are not properly aligned). I may also add a dark mode option, and an option to switch the site to Spanish, but I'm not sure yet, it will depend on the time I have available.
+Developed only with HTML, CSS and JavaScript. Added special features such as pasting, restarting, deleting text and dark mode theme.
+
+May work on responsive design and option to switch language to Spanish.
+
+* **Updated: 10/19/2025.**
+
+https://kristofer2017.github.io/Challenge-Encrypter/
+
+![alt text](Images/prev1.png)
+
+![alt text](Images/prev2.png)
+
+![alt text](Images/prev3.png)
